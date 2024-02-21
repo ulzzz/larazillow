@@ -1,14 +1,11 @@
 <template>
-        <div>index</div>
-    <div>
-        The message is {{ message }}
-    </div>
+    <div>index</div>
+    <div>The message is {{ message }}</div>
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import { Link } from "@inertiajs/vue3";
 defineProps({
-    message: String
-})
-
+    message: String,
+});
 </script>
