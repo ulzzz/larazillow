@@ -12,15 +12,25 @@
                 >
                     <Link href="/listing">Larazillow</Link>
                 </div>
-                <div>
+                <div class="flex items-center gap-4" v-if="user">
+                    <div class="text-sm text-gray-500">{{ user.name }}</div>
                     <Link href="/listing/create" class="btn-primary"
                         >+ New Listing</Link
                     >
+                    <div>
+                        <Link href="/logout" method="delete" as="button"
+                            >Log-out</Link
+                        >
+                    </div>
+                </div>
+                <div v-else class="flex items-center gap-4">
+                    <Link href="/login">Sign-In</Link>
+                    <Link href="/user-account/create">Register</Link>
                 </div>
             </nav>
         </div>
     </header>
-    <main class="container mx-auto p-4">
+    <main class="container mx-auto p-4 w-full">
         <div
             v-if="
                 typeof page.props !== 'undefined' &&
@@ -41,7 +51,6 @@ import { ref, computed } from "vue";
 import { Link, usePage } from "@inertiajs/vue3";
 
 const page = usePage();
-const flashSuccess = computed(() => {
-    page.props.flash.success;
-});
+const flashSuccess = computed(() => page.props.flash.success);
+const user = computed(() => page.props.user);
 </script>
